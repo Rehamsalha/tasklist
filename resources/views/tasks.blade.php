@@ -48,17 +48,29 @@
                         <tbody>
                             @foreach ($tasks as $task)
                             <tr>
-                                <td class="table-text"><div>{{$task->name}}</div></td>
+                                <td class="table-text"><div>{{$tasks->name}}</div></td>
 
                                 <!-- Task Delete Button -->
                                 <td>
-                                    <form action="{{url('delete/'.$task->id)}}" method="POST">
+                                    <form action="{{url('delete/'.$task->id)}}" method="DELETE">
                                         @csrf
+                                        @method('delete')
                                         <button type="submit" class="btn btn-danger">
                                             <i class="fa fa-btn fa-trash"></i>Delete
                                         </button>
                                     </form>
                                 </td>
+
+                                   <!-- Task Update Button -->
+                                <td>
+                                    <form action="{{url('update/'.$task->id)}}" method="POST">
+                                        @csrf
+                                       
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fa fa-btn fa-trash"></i>Update
+                                        </button>
+                                    </form>
+                                </td>    
                            
                             @endforeach
                                 
